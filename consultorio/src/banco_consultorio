@@ -1,0 +1,62 @@
+-- Database: consultorio
+
+-- DROP DATABASE consultorio;
+
+CREATE DATABASE consultorio
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+create table medicos (
+id_medico serial not null PRIMARY KEY,
+nome_medico varchar (100)
+)
+
+create table pacientes (
+id_paciente serial not null PRIMARY KEY,
+nome_paciente varchar (100),
+telefone bigint
+)
+
+create table agenda (
+id_agenda serial not null PRIMARY KEY,
+nome_paciente varchar (100),
+nome_medico varchar (100),
+data_consulta date,
+hora_consulta time
+)
+drop table agenda;
+drop table medicos;
+drop table pacientes;
+
+select * from medicos;
+
+insert into medicos (nome_medico) values ('Joao');
+insert into medicos (nome_medico) values ('José');
+insert into medicos (nome_medico) values ('Maria');
+
+select * from pacientes;
+
+insert into pacientes (nome_paciente, telefone) values ('Jessica Dias', 
+
+32680809);
+insert into pacientes (nome_paciente, telefone) values ('Leonardo 
+
+Monteiro', 32681550);
+insert into pacientes (nome_paciente, telefone) values ('Marco Mangan', 
+
+32461550);
+
+select * from agenda;
+
+insert into agenda (nome_paciente, nome_medico, data_consulta, 
+
+hora_consulta) values ('Jessica', 'Joao', '18/10/2012', '16:00');
+
+insert into agenda (nome_paciente, nome_medico, data_consulta, 
+
+hora_consulta) 
+values ('Leonardo Monteiro', 'José', '25/10/2012', '14:00' );
