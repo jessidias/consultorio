@@ -13,7 +13,6 @@ public class Teste_Conexao {
 
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT * FROM agenda");
-		ResultSet med = stmt.executeQuery("SELECT * FROM medicos");
 
 		while (rs.next()) {
 			String a = rs.getString("nome_paciente");
@@ -26,7 +25,8 @@ public class Teste_Conexao {
 			System.out.println(d);
 
 		}
-		
+		ResultSet med = stmt.executeQuery("SELECT * FROM medicos");
+
 		while (med.next()) {
 			String m = med.getString("nome_medico");
 			//String b = rs.getString("nome_medico");
