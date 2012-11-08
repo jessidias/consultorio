@@ -17,6 +17,8 @@ import java.util.List;
 
 public class AgendaDAO {
 	private String selectFindAgenda = "select * from agenda where nome_paciente = ? and nome_medico = ?";
+	private String insertAgenda = "insert into pacientes(nome_paciente, telefone) values (?, ?)";
+
 
 	// TODO: acrescentar insert, update ou delete
 
@@ -62,6 +64,36 @@ public class AgendaDAO {
 
 		return r;
 	}
+	
+	public void insertAgenda(String nome_paciente, int telefone) {
+
+		if (nome_paciente == null) {
+			throw new IllegalArgumentException(
+					"O nome do paciente não pode ser null.");
+		}
+		
+		
+		try {
+			Connection con = DriverManager.getConnection(
+					"jdbc:postgresql://localhost:5432/consultorio", "postgres",
+					"senacrs");
+
+			PreparedStatement stmt = con.prepareStatement(insertAgenda);
+			stmt.clearParameters();
+			stmt.setString(1, nome_paciente);
+			stmt.setInt(2, telefone);
+			int in = stmt.executeUpdate();
+			if (in != 1) {
+				throw new RuntimeException("Erro ao inserir operação");
+				}
+				} catch (Exception e) {
+				// FIXME: comunicar erro ao programa
+				e.printStackTrace();
+				}
+				// FIXME: fechar conexões
+				}
+			
+			
 
 	public static void main(String[] args) {
 		AgendaDAO ag = new AgendaDAO();
@@ -70,6 +102,7 @@ public class AgendaDAO {
 			System.out.println("Agenda não encontrada!");
 		} else {
 			System.out.println(c);
+			ag.insertAgenda("Maria Silva", 32680800);
 		}
 	}
 
