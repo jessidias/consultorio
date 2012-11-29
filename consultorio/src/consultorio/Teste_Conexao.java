@@ -1,3 +1,4 @@
+package consultorio;
 import java.sql.Date;
 import java.sql.Statement;
 import java.sql.Connection;

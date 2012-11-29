@@ -1,3 +1,4 @@
+package consultorio;
 
 public class Pacientes {
 	private int id_paciente;

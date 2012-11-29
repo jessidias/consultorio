@@ -1,14 +1,35 @@
 package swing;
 
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
 import javax.swing.*;
 
+import swing.action.JAboutMenuAction;
+import swing.action.JAgendarMenuAction;
+import swing.action.JSairMenuAction;
+
 public class Agenda {
+
+	public static final String PRINCIPAL = "PRINCIPAL";
+
 	private static void createAndShowGUI() {
 		JFrame frame = new JFrame("Agenda");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		CardLayout cards = new CardLayout();
+		JPanel principal = new JPanel(cards);
 
-		JLabel label = new JLabel("TODO: completar painel");
-		frame.getContentPane().add(label);
+		JPanel agendar = new JAgendarPanel(principal, cards);
+		JPanel vazio = new JPanel();
+		JLabel label = new JLabel("Consultório");
+		vazio.add(label);
+
+		principal.add(vazio, PRINCIPAL);
+		principal.add(agendar, JAgendarMenuAction.AGENDAR1);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setIconImage(new ImageIcon("pindorama.jpg").getImage());
+
+		frame.getContentPane().add(principal);
 
 		JMenuBar menubar = new JMenuBar();
 		JMenu file = new JMenu("Arquivo");
@@ -18,15 +39,17 @@ public class Agenda {
 		JMenu help = new JMenu("Ajuda");
 		menubar.add(help);
 
-		JMenuItem exit = new JMenuItem("Sair");
-		file.add(exit);
+		Action exitAction = new JSairMenuAction();
+		file.add(exitAction);
 
-		Action agendaAction = new JAgendarAction();
-		agenda.add(agendaAction);
-		Action aboutAction = new JAboutAction();
+		Action agendarAction = new JAgendarMenuAction(principal, cards);
+		agenda.add(agendarAction);
+		Action aboutAction = new JAboutMenuAction(frame);
 		help.add(aboutAction);
 
 		frame.setJMenuBar(menubar);
+
+		frame.setMinimumSize(new Dimension(400, 200));
 
 		frame.pack();
 		frame.setVisible(true);

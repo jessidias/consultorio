@@ -1,3 +1,4 @@
+package consultorio;
 public class Medicos {
 	private int id_medico;
 	private String nome_medico;
