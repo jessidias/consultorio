@@ -19,23 +19,27 @@ public class Agenda {
 		this.hora_consulta = hora_consulta;
 	}
 
-	private int getId_agenda() {
+	public Agenda(String np) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId_agenda() {
 		return id_agenda;
 	}
 
-	private String getNome_paciente() {
+	public String getNome_paciente() {
 		return nome_paciente;
 	}
 
-	private String getNome_medico() {
+	public String getNome_medico() {
 		return nome_medico;
 	}
 
-	private Date getData_consulta() {
+	public Date getData_consulta() {
 		return data_consulta;
 	}
 
-	private Time getHora_consulta() {
+	public Time getHora_consulta() {
 		return hora_consulta;
 	}
 

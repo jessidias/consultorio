@@ -18,7 +18,7 @@ public class Pacientes {
 	}
 
 
-	private String getNome_paciente() {
+	public String getNome_paciente() {
 		return nome_paciente;
 	}
 

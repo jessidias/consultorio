@@ -7,20 +7,20 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class JAgendarMenuAction extends AbstractAction {
-	public static final String AGENDAR1 = "AGENDAR1";
+public class JConsultarAgendaMenuAction extends AbstractAction {
+	public static final String CONSULTAR1 = "CONSULTAR1";
 
 	private JPanel principal;
 	private CardLayout cards;
-	
-	public JAgendarMenuAction(JPanel principal, CardLayout cards) {
-		super("Cadastrar paciente");
+
+	public JConsultarAgendaMenuAction(JPanel principal, CardLayout cards) {
+		super("Consultar Nome");
 		this.principal = principal;
 		this.cards = cards;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		cards.show(principal, AGENDAR1);
+		cards.show(principal, CONSULTAR1);
 	}
-
 }

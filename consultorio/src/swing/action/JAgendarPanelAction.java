@@ -20,31 +20,36 @@ public class JAgendarPanelAction extends AbstractAction {
 	private JPanel principal;
 	private CardLayout cards;
 
-	private JTextField nome;
+	private JTextField nomep;
 
 	public JAgendarPanelAction(JPanel principal, CardLayout cards,
-			JTextField nome) {
-		super("Agendar");
+			JTextField nomep) {
+		super("Cadastrar");
 		this.principal = principal;
 		this.cards = cards;
-		this.nome = nome;
+		this.nomep = nomep;
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		AgendaDAO ag = new AgendaDAO();
-		List<consultorio.Agenda> c = ag.findAgenda("Jessica Dias", "Joao");
-		if (c.isEmpty()) {
-			System.out.println("Agenda não encontrada!");
-			JOptionPane.showMessageDialog(principal.getRootPane(),
-					"Agenda não encontrada!", "Operação cancelada",
-					JOptionPane.ERROR_MESSAGE);
+		ag.insertAgenda(nomep.getText());
+		//if (c == null) {
+			//System.out.println("Agenda não encontrada!");
+			//JOptionPane.showMessageDialog(principal.getRootPane(),
+				//	"Agenda não encontrada!", "Operação cancelada",
+				//	JOptionPane.ERROR_MESSAGE);
 
-		} else {
-			cards.show(principal, Agenda.PRINCIPAL);
-			}
+		//} 	if (principal != null) {
+			//cards.show(principal, Agenda.PRINCIPAL);
+			//}
 		
+	
+	
+	if (principal != null){
 		
+		cards.show(principal,Agenda.PRINCIPAL);
+	}
 	}
 }
